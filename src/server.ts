@@ -2,7 +2,6 @@ import express, {Application, Router} from "express";
 import bodyParser from 'body-parser';
 import pool from './dbconfig/dbconnector';
 import todosRouter from './routers/TodosRouter';
-import {rejects} from "assert";
 
 class Server {
     private app: Application;
@@ -32,9 +31,11 @@ class Server {
 
     public start = (port: Number):Promise<{} | Number> => {
         return new Promise((resolve, reject) => {
-            resolve(port);
+            this.app.listen(port, () =>{
+                resolve(port)
+            }).on('error', (err: Object) => reject(err));
         })
-            // .on('error', (err: Object) => reject(err));
+
     }
 }
 
