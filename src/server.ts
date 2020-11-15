@@ -27,6 +27,7 @@ class Server {
 
     private routerConfig() {
         this.app.use('/todos', todosRouter);
+        this.app.use('/post', todosRouter);
     }
 
     public start = (port: Number):Promise<{} | Number> => {
