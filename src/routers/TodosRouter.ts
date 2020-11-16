@@ -6,7 +6,7 @@ const router = Router()
 const todosController = new TodosController();
 
 
-router.get('/', todosController.get);
-router.post('/', todosController.post);
+router.get('/get', todosController.get);
+router.post('/post', todosController.post);
 
 export default router;

@@ -6,7 +6,7 @@ class TodosController {
         try {
             const client = await pool.connect();
 
-            const sql = "SELECT * FROM test_table";
+            const sql = `SELECT * FROM test_schema."test_table"`;
             const { rows } = await client.query(sql);
             const todos = rows;
 
@@ -22,7 +22,7 @@ class TodosController {
         try {
             const client = await pool.connect();
 
-            const sql = `INSERT INTO test_schema."test_table" ("name", "isActive") VALUES ('new task', FALSE)`;
+            const sql = `insert into test_schema."test_table" ("name", "isActive") values('task1', false)`;
             const result  = await client.query(sql);
 
             client.release();
